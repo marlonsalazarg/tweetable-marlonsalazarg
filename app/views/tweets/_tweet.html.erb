@@ -1,0 +1,53 @@
+<div id="<%= dom_id tweet %>", class="tweet_card">
+
+  <div class="header_card mb-1">
+    <%= image_tag tweet.user.avatar, alt:"avatar", class: "avatar_card" %>
+    <div>
+      <div>
+        <span class="bold-text"><%= tweet.user.name %></span>
+        <span class="primary-500">@<%=link_to tweet.user.username,user_path(tweet.user.id), class: "primary-500" %></span>
+      </div>
+      <span>
+        <%=link_to time_ago_in_words(tweet.created_at)+' ago', tweet, class: "gray-300" %>
+      </span> 
+    </div>
+  </div>
+
+
+  <div class="body_card mb-4">
+    <%= tweet.body %>
+  </div>
+
+
+  <div class="footer_card">
+    <%if current_user && current_user.id == tweet.user_id%>
+      <div class="box_icons">
+        <%=link_to image_tag('delete_icon.png'), tweet, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+        <%=link_to(image_tag('edit_icon.png'), edit_tweet_path(tweet)) %>
+      </div>
+    <%end%>
+      <div class="box_icons_end">
+        <div>
+        </div>
+          <%=link_to(image_tag('replies_icon.png'),tweet)%>
+          <%= tweet.replies_count %>
+        <% if current_user && Like.find_by(tweet: tweet,user: current_user) %>
+          <%=button_to like_path(tweet), method: :delete, data: { turbo_method: :false }, class: "button like_button" do%>
+            <%=image_tag('like_delete.png')%>
+            <%= tweet.likes_count %>  
+          <% end %>
+        <% else %>
+          <%=button_to likes_path(tweet: tweet), data: { turbo_method: :false }, class: "button like_button" do%>
+            <%=image_tag('like_icon.png')%>
+            <%= tweet.likes_count %>
+          <% end %>
+        <% end %>
+      </div>
+  </div>
+
+  
+
+  <%# <%= tweet.replied_to_id %>
+
+
+</div>

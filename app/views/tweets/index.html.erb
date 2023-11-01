@@ -1,0 +1,13 @@
+<h1 class="center-text mb-4">Home</h1>
+<%# <%= link_to "New tweet", new_tweet_path %>
+<%if current_user %>
+  <%= render "form", tweet: Tweet.new %>
+<%end%>
+
+<div id="tweets">
+  <% @tweets.each do |tweet| %>
+    <% if tweet.replied_to == nil %>
+      <%= render tweet %>
+    <%end%>
+  <% end %>
+</div>
