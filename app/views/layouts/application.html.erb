@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>TweetableMarlonsalazarg</title>
+    <title>Tweetable</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,6 +11,20 @@
   </head>
 
   <body>
-    <%= yield %>
+    <%= render "header/header"%>
+    <section class="section">
+      <div class="container">
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+        <%= yield %>
+      </div>
+    </section>
+    <footer class="footer">
+      <div class="footer__content">
+        <h4>© 2023 - Codeable Tweetable</h4>
+        <h4>Build with ♥ by</h4>
+        <p>♤Marlon Salazar</p>
+      </div>
+    </footer>
   </body>
 </html>
