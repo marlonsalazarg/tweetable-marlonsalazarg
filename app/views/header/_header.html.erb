@@ -1,0 +1,21 @@
+<%= javascript_include_tag('navbar.js')%>
+<header>
+  <div class="container">
+    <div class="header navbar shadow--gray">
+      <%=link_to image_tag("logo_app.png"), tweets_path%>
+      <div class="navbar__menu-icon", onclick="showMenu()">
+        <%=image_tag("navbar_icon.png")%>
+      </div>
+        <div class="navbar navbar-links">
+          <% if user_signed_in? %>
+                <span>Thanks for using Tweetable!</span>
+                <%= link_to "Profile", user_path(current_user), class: "primary-500" %>
+                <%= link_to "Log out", destroy_user_session_path, data: { turbo_method: :delete }, class: "button button--secondary button--sm" %>
+          <% else %>
+                <span>Login to start the tweeting madness!</span>
+                <%= link_to "Log in", new_user_session_path, class: "button button--primary button--sm" %>
+          <%end%>
+        </div>
+    </div>
+  </div>
+</header>
