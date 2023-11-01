@@ -1,0 +1,39 @@
+<div id="<%= dom_id user %>", class="profile_container">
+  <h2 class="mb-4">Profile</h2>
+
+  <div class="avatar_section mb-1">
+    <%= image_tag user.avatar, alt:"avatar", class: "avatar_profile" %>
+  </div>
+
+  <h2 class="mb-1"><%= user.name %></h2>
+  <span class="mb-1">@<%= user.username %></span>
+  <span class="mb-4 gray-300">Joined on <%=user.created_at.strftime("%B %d, %Y")%></span>
+    
+  <%# <%= user.role %>
+  <%# <%= user.token %>
+
+  <% if current_user && current_user.id == user.id%>
+    <%= link_to "Edit profile", edit_user_registration_path, class: "button button--primary button--sm mb-1"%>
+  <%end%>
+</div>
+
+<div class="tabs">
+  <input type="radio" class="tabs__radio" name="tabs-example" id="tab1" checked>
+  <label for="tab1" class="tabs__label">Tweets(<%= user.tweets.count%>)</label>
+  <div class="tabs__content">
+    <div id="tweets">
+      <% user.tweets.order(created_at: :desc).each do |tweet| %>
+        <%= render tweet %>
+      <% end %>
+    </div>
+  </div>
+  <input type="radio" class="tabs__radio" name="tabs-example" id="tab2">
+  <label for="tab2" class="tabs__label">Likes(<%= user.likes.count%>)</label>
+  <div class="tabs__content">
+    <div id="likes">
+      <% user.liked_tweets.order(created_at: :desc).each do |tweet| %>
+        <%= render tweet %>
+      <% end %>
+    </div>
+  </div>
+</div>
