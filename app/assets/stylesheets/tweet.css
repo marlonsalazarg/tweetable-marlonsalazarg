@@ -1,0 +1,98 @@
+/* Tweet.css */
+.size-textarea {
+  resize: none;
+  height: 96px;
+}
+
+.tweet-area{
+  background-color: white;
+  padding: 1px 10px;
+  border-radius: 8px;
+}
+
+.tweet_card {
+  background: white;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 10px;
+  box-shadow:  2px 2px 5px rgb(203, 199, 199);
+}
+
+.header_card {
+  display: flex;
+  gap: 8px;
+}
+
+.avatar_card{
+  border-radius: 50%;
+}
+
+.bold-text {
+  font-weight: bold;
+}
+
+.footer_card{ 
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.footer_card > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.box_icons_start {
+  grid-column: 1 / 2;
+}
+
+.box_icons_end {
+  grid-column: 4 / 5;
+}
+
+.footer_card img {
+  width: 18px;
+  height: 16px;
+}
+
+.like_button {
+  background-color: white;
+  border: 0px;
+  box-shadow: none;
+  padding: 0;
+}
+
+/* tabs.user tweets*/
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 100%;
+  font-family: sans-serif;
+}
+
+.tabs__label {
+  padding: 10px 16px;
+  cursor: pointer;
+}
+
+.tabs__radio {
+  display: none;
+}
+
+.tabs__content {
+  order: 1;
+  width: 100%;
+  border-bottom: 3px solid #dddddd;
+  line-height: 1.5;
+  font-size: 0.9em;
+  display: none;
+}
+
+.tabs__radio:checked + .tabs__label {
+  font-weight: bold;
+  color: var(--primary-600);
+  border-bottom: 2px solid var(--primary-600);
+}
+
+.tabs__radio:checked + .tabs__label + .tabs__content {
+  display: initial;
+}

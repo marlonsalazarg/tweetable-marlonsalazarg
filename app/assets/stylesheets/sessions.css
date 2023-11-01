@@ -1,0 +1,32 @@
+.sign_in_container {
+  display: grid;
+  place-items: center;
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px 0px;
+  box-shadow:  5px 5px 1px rgb(203, 199, 199);
+  padding: 20px;
+}
+
+.actions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.avatar_image_show{
+  display: flex;
+  border-radius: 50%;
+  width: 20%;
+}
+
+/* SHOW PROFILE USER profile_user.css */
+
+.profile_container {
+  display: grid;
+  place-items: center;
+}
+
+.avatar_profile {
+  border-radius: 50%;
+  width: 96px;
+}
