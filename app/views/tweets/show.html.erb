@@ -1,15 +1,18 @@
-<h1 class="center-text mb-4">Tweet Detail</h1>
+<h1 class="mb-6 text-2xl font-semibold text-gray-500">Tweet Detail</h1>
 <%= render @tweet %>
 
-  <%# <%= link_to "Edit this tweet", edit_tweet_path(@tweet) %>
-  <%# <%= link_to "Back to tweets", tweets_path %>
-  <%# <%= button_to "Destroy this tweet", @tweet, method: :delete %>
-<hr>
-<%if current_user %>
-  <%= render "reply", { tweet: Tweet.new, replied_to_id: @tweet.id} %>
-<%end%>
+<% if current_user %>
+  <div class="mt-6">
+    <%= render "form", tweet: Tweet.new, replied_to_id: @tweet.id,
+               placeholder: "Something to say about it?" %>
+  </div>
+<% end %>
+
 <% if @tweet.replies.any? %>
-  <% @tweet.replies.order(created_at: :desc).each do |reply| %>
-    <%= render reply %>
-  <% end %>
+  <h2 class="mb-3 mt-6 text-sm font-medium uppercase tracking-widest text-gray-300">Replies</h2>
+  <div class="space-y-3">
+    <% @tweet.replies.order(created_at: :desc).each do |reply| %>
+      <%= render reply %>
+    <% end %>
+  </div>
 <% end %>

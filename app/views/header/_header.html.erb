@@ -1,21 +1,29 @@
-<%= javascript_include_tag('navbar.js')%>
-<header>
-  <div class="container">
-    <div class="header navbar shadow--gray">
-      <%=link_to image_tag("logo_app.png"), tweets_path%>
-      <div class="navbar__menu-icon", onclick="showMenu()">
-        <%=image_tag("navbar_icon.png")%>
-      </div>
-        <div class="navbar navbar-links">
-          <% if user_signed_in? %>
-                <span>Thanks for using Tweetable!</span>
-                <%= link_to "Profile", user_path(current_user), class: "primary-500" %>
-                <%= link_to "Log out", destroy_user_session_path, data: { turbo_method: :delete }, class: "button button--secondary button--sm" %>
-          <% else %>
-                <span>Login to start the tweeting madness!</span>
-                <%= link_to "Log in", new_user_session_path, class: "button button--primary button--sm" %>
-          <%end%>
-        </div>
-    </div>
+<header class="sticky top-0 z-20 border-b border-gray-200 bg-white/80 backdrop-blur"
+        data-controller="navbar">
+  <div class="relative mx-auto flex max-w-2xl items-center justify-between px-4 py-3">
+    <%= link_to tweets_path, class: "shrink-0" do %>
+      <%= image_tag "logo_app.png", alt: "Tweetable", class: "h-9 w-auto" %>
+    <% end %>
+
+    <button type="button"
+            class="rounded-full p-2 text-gray-400 hover:bg-gray-100 md:hidden"
+            aria-label="Toggle menu" aria-expanded="false"
+            data-navbar-target="button" data-action="navbar#toggle">
+      <span data-navbar-target="open"><%= render "shared/icons/menu", css: "size-6" %></span>
+      <span class="hidden" data-navbar-target="close"><%= render "shared/icons/x", css: "size-6" %></span>
+    </button>
+
+    <nav class="absolute inset-x-0 top-full hidden flex flex-col items-start gap-3 border-b border-gray-200 bg-white px-4 py-4 shadow-md md:static md:flex md:flex-row md:items-center md:gap-4 md:border-0 md:bg-transparent md:p-0 md:shadow-none"
+         data-navbar-target="menu">
+      <% if user_signed_in? %>
+        <span class="text-sm text-gray-300">Thanks for using Tweetable!</span>
+        <%= link_to "Profile", user_path(current_user), class: "link text-sm font-medium" %>
+        <%= link_to "Log out", destroy_user_session_path,
+                    data: { turbo_method: :delete }, class: "btn btn-secondary btn-sm" %>
+      <% else %>
+        <span class="text-sm text-gray-300">Login to start the tweeting madness!</span>
+        <%= link_to "Log in", new_user_session_path, class: "btn btn-primary btn-sm" %>
+      <% end %>
+    </nav>
   </div>
 </header>

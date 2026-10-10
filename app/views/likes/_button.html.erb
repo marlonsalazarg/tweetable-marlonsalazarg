@@ -1,13 +1,17 @@
 <%# Not an id: the same tweet can be on screen twice (profile Tweets + Likes tabs). %>
 <div data-like-button="<%= tweet.id %>">
   <% if current_user && Like.exists?(tweet: tweet, user: current_user) %>
-    <%= button_to like_path(tweet), method: :delete, class: "button like_button" do %>
-      <%= image_tag("like_delete.png") %>
+    <%= button_to like_path(tweet), method: :delete,
+          class: "inline-flex cursor-pointer items-center gap-1.5 text-primary-500 transition hover:text-primary-600",
+          aria: { label: "Unlike" } do %>
+      <%= render "shared/icons/heart_solid" %>
       <%= tweet.likes_count %>
     <% end %>
   <% else %>
-    <%= button_to likes_path(tweet: tweet), class: "button like_button" do %>
-      <%= image_tag("like_icon.png") %>
+    <%= button_to likes_path(tweet: tweet),
+          class: "inline-flex cursor-pointer items-center gap-1.5 transition hover:text-primary-500",
+          aria: { label: "Like" } do %>
+      <%= render "shared/icons/heart" %>
       <%= tweet.likes_count %>
     <% end %>
   <% end %>

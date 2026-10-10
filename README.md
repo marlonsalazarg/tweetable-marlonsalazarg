@@ -41,11 +41,11 @@ bin/dev
 
 Then open http://localhost:3000.
 
-`bin/dev` runs the Rails server and the Tailwind watcher together (via foreman, see `Procfile.dev`). If you start the server with `bundle exec rails server` instead, build the CSS first with `bundle exec rails tailwindcss:build`, and rebuild after adding new classes.
+`bin/dev` runs the Rails server and the Tailwind watcher together (via foreman, see `Procfile.dev`). The repo pins Ruby 3.1.2 in `.ruby-version`, so install it first (`rbenv install 3.1.2`) and make sure rbenv is initialized in your shell; with macOS's system Ruby 2.6, `bin/dev` fails with `Gem::FilePermissionError` while trying to install foreman. If port 3000 is busy, use `PORT=3001 bin/dev`. If you start the server with `bundle exec rails server` instead, build the CSS first with `bundle exec rails tailwindcss:build`, and rebuild after adding new classes.
 
 ### Styling
 
-Tailwind's entry file is `app/assets/stylesheets/application.tailwind.css` and its config is `config/tailwind.config.js`. The compiled output goes to `app/assets/builds/tailwind.css`, which is git-ignored. The hand-written stylesheets in `app/assets/stylesheets/` load after Tailwind, so they override it.
+Tailwind's entry file is `app/assets/stylesheets/application.tailwind.css` and its config is `config/tailwind.config.js`. The compiled output goes to `app/assets/builds/tailwind.css`, which is git-ignored. There is no hand-written CSS: the palette lives in the Tailwind theme and the reusable components (`btn`, `input`, `card`, ...) are defined in `application.tailwind.css`.
 
 When deploying to Linux, add the platform to the lockfile first:
 

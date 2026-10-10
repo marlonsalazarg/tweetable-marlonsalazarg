@@ -5,24 +5,29 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap">
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
-
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <%= render "header/header"%>
-    <section class="section">
-      <div class="container">
-        <p class="notice"><%= notice %></p>
-        <p class="alert"><%= alert %></p>
-        <%= yield %>
-      </div>
-    </section>
-    <footer class="footer">
-      <div class="footer__content">
-        <h4>© 2023 - Codeable Tweetable</h4>
+  <body class="flex min-h-screen flex-col">
+    <%= render "header/header" %>
+
+    <main class="mx-auto w-full max-w-2xl flex-1 px-4 py-8">
+      <% if notice.present? %>
+        <p class="mb-6 rounded-lg bg-primary-100 px-4 py-3 text-sm text-primary-600"><%= notice %></p>
+      <% end %>
+      <% if alert.present? %>
+        <p class="alert-box mb-6"><%= alert %></p>
+      <% end %>
+      <%= yield %>
+    </main>
+
+    <footer class="mt-auto border-t border-gray-200 py-8 text-center text-sm text-gray-300">
+      <div class="mx-auto flex max-w-2xl flex-col items-center gap-1 px-4">
+        <h4 class="font-semibold text-gray-400">© 2023 - Codeable Tweetable</h4>
         <h4>Build with ♥ by</h4>
         <p>♤Marlon Salazar</p>
       </div>
