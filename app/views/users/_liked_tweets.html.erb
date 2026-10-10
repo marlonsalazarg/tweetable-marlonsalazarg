@@ -1,0 +1,3 @@
+<% user.liked_tweets.order(created_at: :desc).each do |tweet| %>
+  <%= render "tweets/tweet", tweet: tweet, scope: :liked %>
+<% end %>

@@ -28,12 +28,10 @@
     </div>
   </div>
   <input type="radio" class="tabs__radio" name="tabs-example" id="tab2">
-  <label for="tab2" class="tabs__label">Likes(<%= user.likes.count%>)</label>
+  <label for="tab2" class="tabs__label">Likes(<span id="<%= dom_id(user, :likes_count) %>"><%= user.likes.count %></span>)</label>
   <div class="tabs__content">
-    <div id="likes">
-      <% user.liked_tweets.order(created_at: :desc).each do |tweet| %>
-        <%= render tweet %>
-      <% end %>
+    <div id="<%= dom_id(user, :liked_tweets) %>">
+      <%= render "users/liked_tweets", user: user %>
     </div>
   </div>
 </div>

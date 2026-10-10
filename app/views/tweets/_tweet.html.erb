@@ -1,4 +1,4 @@
-<div id="<%= dom_id tweet %>", class="tweet_card">
+<div id="<%= dom_id tweet, local_assigns[:scope] %>" class="tweet_card">
 
   <div class="header_card mb-1">
     <%= image_tag tweet.user.avatar, alt:"avatar", class: "avatar_card" %>
@@ -31,17 +31,7 @@
         </div>
           <%=link_to(image_tag('replies_icon.png'),tweet)%>
           <%= tweet.replies_count %>
-        <% if current_user && Like.find_by(tweet: tweet,user: current_user) %>
-          <%=button_to like_path(tweet), method: :delete, data: { turbo_method: :false }, class: "button like_button" do%>
-            <%=image_tag('like_delete.png')%>
-            <%= tweet.likes_count %>  
-          <% end %>
-        <% else %>
-          <%=button_to likes_path(tweet: tweet), data: { turbo_method: :false }, class: "button like_button" do%>
-            <%=image_tag('like_icon.png')%>
-            <%= tweet.likes_count %>
-          <% end %>
-        <% end %>
+        <%= render "likes/button", tweet: tweet %>
       </div>
   </div>
 
