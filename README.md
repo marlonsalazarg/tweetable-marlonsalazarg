@@ -17,6 +17,7 @@ A simple Twitter-like app built with Ruby on Rails. Users can post short tweets,
 - Rails 7.0
 - PostgreSQL
 - Hotwire (Turbo + Stimulus) with importmaps
+- Tailwind CSS 3 via `tailwindcss-rails` (no Node required)
 - Active Storage for avatars
 
 ## Getting Started
@@ -35,10 +36,22 @@ cd tweetable-marlonsalazarg
 bundle install
 cp .env.example .env
 bundle exec rails db:create db:migrate db:seed
-bundle exec rails server
+bin/dev
 ```
 
 Then open http://localhost:3000.
+
+`bin/dev` runs the Rails server and the Tailwind watcher together (via foreman, see `Procfile.dev`). If you start the server with `bundle exec rails server` instead, build the CSS first with `bundle exec rails tailwindcss:build`, and rebuild after adding new classes.
+
+### Styling
+
+Tailwind's entry file is `app/assets/stylesheets/application.tailwind.css` and its config is `config/tailwind.config.js`. The compiled output goes to `app/assets/builds/tailwind.css`, which is git-ignored. The hand-written stylesheets in `app/assets/stylesheets/` load after Tailwind, so they override it.
+
+When deploying to Linux, add the platform to the lockfile first:
+
+```bash
+bundle lock --add-platform x86_64-linux
+```
 
 ### GitHub Sign-In
 
