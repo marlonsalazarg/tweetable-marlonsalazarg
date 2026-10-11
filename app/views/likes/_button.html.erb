@@ -1,14 +1,14 @@
 <%# Not an id: the same tweet can be on screen twice (profile Tweets + Likes tabs). %>
-<div data-like-button="<%= tweet.id %>">
+<div class="flex items-center" data-like-button="<%= tweet.id %>">
   <% if current_user && Like.exists?(tweet: tweet, user: current_user) %>
-    <%= button_to like_path(tweet), method: :delete,
+    <%= button_to like_path(tweet), method: :delete, form_class: "flex",
           class: "inline-flex cursor-pointer items-center gap-1.5 text-primary-500 transition hover:text-primary-600",
           aria: { label: "Unlike" } do %>
       <%= render "shared/icons/heart_solid" %>
       <%= tweet.likes_count %>
     <% end %>
   <% else %>
-    <%= button_to likes_path(tweet: tweet),
+    <%= button_to likes_path(tweet: tweet), form_class: "flex",
           class: "inline-flex cursor-pointer items-center gap-1.5 transition hover:text-primary-500",
           aria: { label: "Like" } do %>
       <%= render "shared/icons/heart" %>
