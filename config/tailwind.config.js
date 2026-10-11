@@ -43,6 +43,7 @@ module.exports = {
       },
       fontFamily: {
         sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+        logo: ['Roboto', ...defaultTheme.fontFamily.sans],
         display: ['Montserrat', 'Inter var', ...defaultTheme.fontFamily.sans],
       },
     },

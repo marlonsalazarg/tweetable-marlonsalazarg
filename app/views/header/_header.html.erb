@@ -1,8 +1,11 @@
 <header class="sticky top-0 z-20 border-b border-gray-200 bg-white/80 backdrop-blur"
         data-controller="navbar">
   <div class="relative mx-auto flex max-w-2xl items-center justify-between px-4 py-3">
-    <%= link_to tweets_path, class: "shrink-0" do %>
-      <%= image_tag "logo_app.png", alt: "Tweetable", class: "h-9 w-auto" %>
+    <%= link_to tweets_path, class: "shrink-0 font-logo text-xl font-bold leading-none tracking-tight text-gray-400",
+                aria: { label: "Tweetable" } do %>
+      <span class="font-medium" aria-hidden="true">{</span>
+      <span class="text-primary-400">Tweet</span>able
+      <span class="font-medium" aria-hidden="true">}</span>
     <% end %>
 
     <button type="button"
