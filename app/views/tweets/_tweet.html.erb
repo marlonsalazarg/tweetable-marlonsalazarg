@@ -1,4 +1,5 @@
-<article id="<%= dom_id tweet, local_assigns[:scope] %>"
+<%# data-tweet, not just the id: the same tweet can be on screen twice (profile Tweets + Likes tabs). %>
+<article id="<%= dom_id tweet, local_assigns[:scope] %>" data-tweet="<%= tweet.id %>"
          class="card p-4 transition hover:bg-gray-100/40">
   <div class="flex items-center gap-3">
     <%= image_tag tweet.user.avatar, alt: "avatar", class: "size-11 shrink-0 rounded-full object-cover" %>
@@ -18,7 +19,7 @@
     <%= link_to tweet, class: "inline-flex items-center gap-1.5 transition hover:text-primary-500",
                 aria: { label: "Replies" } do %>
       <%= render "shared/icons/reply" %>
-      <%= tweet.replies_count %>
+      <span data-replies-count="<%= tweet.id %>"><%= tweet.replies_count %></span>
     <% end %>
 
     <%= render "likes/button", tweet: tweet %>
@@ -29,11 +30,13 @@
                     aria: { label: "Edit tweet" } do %>
           <%= render "shared/icons/pencil" %>
         <% end %>
-        <%= link_to tweet, class: "transition hover:text-error-300",
-                    aria: { label: "Delete tweet" },
-                    data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+        <button type="button" class="cursor-pointer transition hover:text-error-300"
+                aria-label="Delete tweet"
+                data-action="confirm-dialog#open"
+                data-confirm-dialog-url-param="<%= tweet_path(tweet) %>"
+                data-confirm-dialog-redirect-param="<%= local_assigns[:redirect_on_delete] ? 1 : 0 %>">
           <%= render "shared/icons/trash" %>
-        <% end %>
+        </button>
       </div>
     <% end %>
   </div>

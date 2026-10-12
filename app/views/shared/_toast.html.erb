@@ -1,0 +1,15 @@
+<%# locals: message, type (:notice | :alert) %>
+<% alert = type.to_sym == :alert %>
+<div data-controller="toast"
+     data-action="mouseenter->toast#pause mouseleave->toast#resume"
+     role="<%= alert ? "alert" : "status" %>"
+     class="pointer-events-auto flex w-full max-w-sm translate-y-2 items-center gap-3 rounded-xl bg-gray-500 px-4 py-3 text-sm text-white opacity-0 shadow-lg transition duration-300">
+  <span class="<%= alert ? "text-error-100" : "text-primary-300" %>">
+    <%= render alert ? "shared/icons/exclamation_circle" : "shared/icons/check_circle", css: "size-6" %>
+  </span>
+  <p class="flex-1"><%= message %></p>
+  <button type="button" data-action="toast#dismiss" aria-label="Dismiss"
+          class="cursor-pointer text-gray-200 transition hover:text-white">
+    <%= render "shared/icons/x" %>
+  </button>
+</div>

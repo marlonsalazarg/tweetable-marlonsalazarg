@@ -12,18 +12,19 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="flex min-h-screen flex-col">
+  <body class="flex min-h-screen flex-col" data-controller="confirm-dialog">
     <%= render "header/header" %>
 
     <main class="mx-auto w-full max-w-2xl flex-1 px-4 py-8">
-      <% if notice.present? %>
-        <p class="mb-6 rounded-lg bg-primary-100 px-4 py-3 text-sm text-primary-600"><%= notice %></p>
-      <% end %>
-      <% if alert.present? %>
-        <p class="alert-box mb-6"><%= alert %></p>
-      <% end %>
       <%= yield %>
     </main>
+
+    <div id="toasts" class="pointer-events-none fixed inset-x-0 bottom-6 z-50 flex flex-col items-center gap-2 px-4">
+      <%= render "shared/toast", message: notice, type: :notice if notice.present? %>
+      <%= render "shared/toast", message: alert, type: :alert if alert.present? %>
+    </div>
+
+    <%= render "shared/confirm_dialog" if current_user %>
 
     <footer class="mt-auto border-t border-gray-200 py-8 text-center text-sm text-gray-300">
       <div class="mx-auto flex max-w-2xl flex-col items-center gap-1 px-4">

@@ -19,7 +19,7 @@
   <input type="radio" class="peer/tweets sr-only" name="profile-tabs" id="tab1" checked>
   <label for="tab1"
          class="cursor-pointer border-b-2 border-transparent px-4 py-3 text-gray-300 transition hover:text-gray-500 peer-checked/tweets:border-primary-600 peer-checked/tweets:font-semibold peer-checked/tweets:text-primary-600 peer-focus-visible/tweets:ring-2 peer-focus-visible/tweets:ring-primary-300">
-    Tweets(<%= user.tweets.count %>)
+    Tweets(<span id="<%= dom_id(user, :tweets_count) %>"><%= user.tweets.count %></span>)
   </label>
 
   <input type="radio" class="peer/likes sr-only" name="profile-tabs" id="tab2">

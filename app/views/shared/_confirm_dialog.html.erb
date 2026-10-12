@@ -1,0 +1,22 @@
+<dialog data-confirm-dialog-target="dialog"
+        data-action="click->confirm-dialog#backdrop"
+        aria-labelledby="confirm-dialog-title"
+        class="m-auto w-[calc(100%-2rem)] max-w-sm rounded-2xl bg-white p-6 shadow-xl backdrop:bg-gray-500/50 backdrop:backdrop-blur-sm">
+  <div class="flex items-start gap-4">
+    <span class="flex size-10 shrink-0 items-center justify-center rounded-full bg-error-100/20 text-error-400">
+      <%= render "shared/icons/trash" %>
+    </span>
+    <div>
+      <h2 id="confirm-dialog-title" class="text-lg font-semibold text-gray-500">Delete tweet?</h2>
+      <p class="mt-1 text-sm text-gray-300">This can't be undone. Replies to it will be deleted too.</p>
+    </div>
+  </div>
+
+  <%= form_with url: "", method: :delete, data: { confirm_dialog_target: "form",
+                                                 action: "turbo:submit-start->confirm-dialog#submitting turbo:submit-end->confirm-dialog#submitted" },
+                class: "mt-6 flex justify-end gap-3" do %>
+    <%= hidden_field_tag :redirect, "", data: { confirm_dialog_target: "redirect" } %>
+    <button type="button" autofocus data-action="confirm-dialog#close" class="btn btn-ghost btn-sm">Cancel</button>
+    <button type="submit" data-confirm-dialog-target="submit" class="btn btn-danger btn-sm">Delete</button>
+  <% end %>
+</dialog>
