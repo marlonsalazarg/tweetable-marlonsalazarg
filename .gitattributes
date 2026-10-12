@@ -5,3 +5,6 @@ db/schema.rb linguist-generated
 
 # Mark any vendored files as having been vendored.
 vendor/* linguist-vendored
+
+# Claude Code tooling (design skill scripts), not part of the app.
+.claude/** linguist-vendored
