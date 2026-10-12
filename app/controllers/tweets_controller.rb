@@ -1,5 +1,7 @@
 class TweetsController < ApplicationController
   before_action :set_tweet, only: %i[show edit update destroy]
+  before_action :authorize_edit!, only: %i[edit update]
+  before_action :authorize_destroy!, only: :destroy
 
   # GET /tweets
   def index
@@ -64,12 +66,16 @@ class TweetsController < ApplicationController
     [tweet.id] + tweet.replies.flat_map { |reply| tweet_tree_ids(reply) }
   end
 
-  # Targets that aren't on the current page are ignored by Turbo.
+  # Targets that aren't on the current page are ignored by Turbo. When an admin deletes someone
+  # else's tweet the author isn't current_user, so the author's counters are updated as well.
   def destroy_streams(removed_ids, parent, notice)
+    author = @tweet.user
     streams = [
       turbo_stream.remove_all(removed_ids.map { |id| "[data-tweet='#{id}']" }.join(", ")),
-      turbo_stream.update(helpers.dom_id(current_user, :tweets_count), current_user.tweets.count),
-      turbo_stream.update(helpers.dom_id(current_user, :likes_count), current_user.likes.count),
+      turbo_stream.update(helpers.dom_id(author, :tweets_count), author.tweets.count),
+      *[author, current_user].uniq.map do |user|
+        turbo_stream.update(helpers.dom_id(user, :likes_count), user.likes.count)
+      end,
       turbo_stream.append("toasts", partial: "shared/toast",
                                     locals: { message: notice, type: :notice })
     ]
@@ -86,8 +92,20 @@ class TweetsController < ApplicationController
     @tweet = Tweet.find(params[:id])
   end
 
-  # Only allow a list of trusted parameters through.
+  def authorize_edit!
+    deny_access unless @tweet.editable_by?(current_user)
+  end
+
+  def authorize_destroy!
+    deny_access unless @tweet.deletable_by?(current_user)
+  end
+
+  def deny_access
+    redirect_to tweet_url(@tweet), alert: "You can't change this tweet.", status: :see_other
+  end
+
+  # Only the body is user-editable; counters are caches and replied_to_id is set in #create.
   def tweet_params
-    params.require(:tweet).permit(:body, :replies_count, :likes_count, :replied_to_id)
+    params.require(:tweet).permit(:body)
   end
 end

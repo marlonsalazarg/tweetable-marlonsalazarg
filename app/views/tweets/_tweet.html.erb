@@ -26,11 +26,14 @@
 
     <%= render "likes/button", tweet: tweet %>
 
-    <% if current_user && current_user.id == tweet.user_id %>
+    <%# Admins can delete any tweet but only edit their own. %>
+    <% if tweet.deletable_by?(current_user) %>
       <div class="ml-auto flex items-center gap-4">
-        <%= link_to edit_tweet_path(tweet), class: "action hover:text-primary-500",
-                    aria: { label: "Edit tweet" } do %>
-          <%= render "shared/icons/pencil" %>
+        <% if tweet.editable_by?(current_user) %>
+          <%= link_to edit_tweet_path(tweet), class: "action hover:text-primary-500",
+                      aria: { label: "Edit tweet" } do %>
+            <%= render "shared/icons/pencil" %>
+          <% end %>
         <% end %>
         <button type="button" class="action hover:text-error-300"
                 aria-label="Delete tweet"

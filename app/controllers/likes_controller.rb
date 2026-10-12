@@ -1,57 +1,17 @@
 class LikesController < ApplicationController
-  # before_action :set_like, only: %i[ show edit update destroy ]
-
-  # # GET /likes
-  # def index
-  #   @likes = Like.all
-  # end
-
-  # # GET /likes/1
-  # def show
-  # end
-
-  # # GET /likes/new
-  # def new
-  #   @like = Like.new
-  # end
-
-  # # GET /likes/1/edit
-  # def edit
-  # end
-
-  # POST /likes
+  # POST /likes?tweet=:tweet_id
   def create
     @tweet = Tweet.find(params[:tweet])
     create_like
     respond_with_like_button
   end
 
-  # PATCH/PUT /likes/1
-  # def update
-  #   if @like.update(like_params)
-  #     redirect_to @like, notice: "Like was successfully updated."
-  #   else
-  #     render :edit, status: :unprocessable_entity
-  #   end
-  # end
-
-  # DELETE /likes/1
+  # DELETE /likes/:tweet_id (the tweet id, not a Like id)
   def destroy
     @tweet = Tweet.find(params[:id])
     Like.find_by(user: current_user, tweet: @tweet)&.destroy
     respond_with_like_button
   end
-
-  # private
-  #   # Use callbacks to share common setup or constraints between actions.
-  #   def set_like
-  #     @like = Like.find(params[:id])
-  #   end
-
-  #   # Only allow a list of trusted parameters through.
-  #   def like_params
-  #     params.require(:like).permit(:user_id, :tweet_id)
-  #   end
 
   private
 

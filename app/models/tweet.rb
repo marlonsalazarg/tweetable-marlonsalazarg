@@ -10,4 +10,13 @@ class Tweet < ApplicationRecord
   validates :body, presence: true, length: { maximum: 140 }
   # replied_to is not required but it should be a valid Tweet id
   validates :replied_to_id, numericality: { only_integer: true, allow_nil: true }
+
+  # Permissions: only the author edits; the author or an admin can delete. `user` may be nil.
+  def editable_by?(user)
+    user.present? && user_id == user.id
+  end
+
+  def deletable_by?(user)
+    user.present? && (user_id == user.id || user.admin?)
+  end
 end
