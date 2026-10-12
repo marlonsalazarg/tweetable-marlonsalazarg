@@ -1,3 +1,4 @@
+<% content_for :title, "Edit tweet" %>
 <h1 class="mb-6 text-2xl font-semibold text-gray-500">Edit tweet</h1>
 
-<%= render "form", tweet: @tweet, submit: "Update" %>
+<%= render "form", tweet: @tweet, submit: "Save", cancel_path: tweet_path(@tweet) %>

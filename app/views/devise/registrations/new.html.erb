@@ -1,5 +1,6 @@
+<% content_for :title, "Create an account" %>
 <div class="card mx-auto max-w-md p-8">
-  <h2 class="mb-6 text-center text-2xl font-semibold text-gray-500">Create an account</h2>
+  <h1 class="mb-6 text-center text-2xl font-semibold text-gray-500">Create an account</h1>
 
   <%- if devise_mapping.omniauthable? %>
     <%- resource_class.omniauth_providers.each do |provider| %>
@@ -42,7 +43,7 @@
     <div class="mb-4">
       <%= f.label :password, class: "label" %>
       <% if @minimum_password_length %>
-        <em class="mb-1 block text-xs text-gray-300">(<%= @minimum_password_length %> characters minimum)</em>
+        <p class="mb-1 text-xs text-gray-300"><%= @minimum_password_length %> characters minimum</p>
       <% end %>
       <%= f.password_field :password, autocomplete: "new-password",
                            placeholder: "******", class: "input" %>

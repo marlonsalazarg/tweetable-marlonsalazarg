@@ -1,15 +1,25 @@
-<h1 class="mb-6 text-2xl font-semibold text-gray-500">Tweet Detail</h1>
+<% content_for :title, "Thread" %>
+<% parent = @tweet.replied_to %>
+<div class="mb-6 flex items-center gap-2">
+  <%= link_to parent ? tweet_path(parent) : tweets_path,
+              class: "-ml-2 grid size-10 place-items-center rounded-full text-gray-400 transition hover:bg-white hover:text-gray-500",
+              aria: { label: parent ? "Back to the tweet this replies to" : "Back to Home" } do %>
+    <%= render "shared/icons/arrow_left" %>
+  <% end %>
+  <h1 class="text-2xl font-semibold text-gray-500">Thread</h1>
+</div>
+
 <%= render "tweets/tweet", tweet: @tweet, redirect_on_delete: true %>
 
 <% if current_user %>
-  <div class="mt-6">
-    <%= render "form", tweet: Tweet.new, replied_to_id: @tweet.id,
+  <div class="mt-3">
+    <%= render "form", tweet: Tweet.new, replied_to_id: @tweet.id, submit: "Reply",
                placeholder: "Something to say about it?" %>
   </div>
 <% end %>
 
 <% if @tweet.replies.any? %>
-  <h2 class="mb-3 mt-6 text-sm font-medium uppercase tracking-widest text-gray-300">Replies</h2>
+  <h2 class="mb-3 mt-8 text-xs font-medium uppercase tracking-widest text-gray-300">Replies</h2>
   <div class="space-y-3">
     <% @tweet.replies.order(created_at: :desc).each do |reply| %>
       <%= render reply %>

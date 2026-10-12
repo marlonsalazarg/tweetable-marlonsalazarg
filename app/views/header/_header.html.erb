@@ -1,32 +1,80 @@
+<% desktop_link = "rounded-full px-3 py-1.5 text-sm font-medium text-gray-400 transition hover:bg-gray-100 hover:text-gray-500 aria-[current=page]:text-primary-600" %>
 <header class="sticky top-0 z-20 border-b border-gray-200 bg-white/80 backdrop-blur"
-        data-controller="navbar">
-  <div class="relative mx-auto flex max-w-2xl items-center justify-between px-4 py-3">
-    <%= link_to tweets_path, class: "shrink-0 font-logo text-xl font-bold leading-none tracking-tight text-gray-400",
-                aria: { label: "Tweetable" } do %>
+        data-controller="navbar"
+        data-action="keydown.esc@window->navbar#closeOnEscape turbo:before-cache@document->navbar#close">
+  <div class="relative z-10 mx-auto flex h-14 max-w-2xl items-center justify-between px-4">
+    <%= link_to tweets_path, class: "-ml-1 shrink-0 rounded-md px-1 font-logo text-xl font-bold leading-none tracking-tight text-gray-400",
+                aria: { label: "Tweetable, home" } do %>
       <span class="font-medium" aria-hidden="true">{</span>
       <span class="text-primary-400">Tweet</span>able
       <span class="font-medium" aria-hidden="true">}</span>
     <% end %>
 
-    <button type="button"
-            class="rounded-full p-2 text-gray-400 hover:bg-gray-100 md:hidden"
-            aria-label="Toggle menu" aria-expanded="false"
-            data-navbar-target="button" data-action="navbar#toggle">
-      <span data-navbar-target="open"><%= render "shared/icons/menu", css: "size-6" %></span>
-      <span class="hidden" data-navbar-target="close"><%= render "shared/icons/x", css: "size-6" %></span>
-    </button>
-
-    <nav class="absolute inset-x-0 top-full hidden flex flex-col items-start gap-3 border-b border-gray-200 bg-white px-4 py-4 shadow-md md:static md:flex md:flex-row md:items-center md:gap-4 md:border-0 md:bg-transparent md:p-0 md:shadow-none"
-         data-navbar-target="menu">
+    <nav class="hidden items-center gap-1 md:flex" aria-label="Main">
       <% if user_signed_in? %>
-        <span class="text-sm text-gray-300">Thanks for using Tweetable!</span>
-        <%= link_to "Profile", user_path(current_user), class: "link text-sm font-medium" %>
+        <%= link_to "Home", tweets_path, class: desktop_link, aria: current_page_aria(tweets_path) %>
+        <%= link_to "Profile", user_path(current_user), class: desktop_link,
+                    aria: current_page_aria(user_path(current_user)) %>
         <%= link_to "Log out", destroy_user_session_path,
-                    data: { turbo_method: :delete }, class: "btn btn-secondary btn-sm" %>
+                    data: { turbo_method: :delete }, class: "btn btn-secondary btn-sm ml-3" %>
       <% else %>
-        <span class="text-sm text-gray-300">Login to start the tweeting madness!</span>
-        <%= link_to "Log in", new_user_session_path, class: "btn btn-primary btn-sm" %>
+        <%= link_to "Sign up", new_user_registration_path, class: desktop_link,
+                    aria: current_page_aria(new_user_registration_path) %>
+        <%= link_to "Log in", new_user_session_path, class: "btn btn-primary btn-sm ml-2" %>
       <% end %>
     </nav>
+
+    <button type="button"
+            class="-mr-2 grid size-10 cursor-pointer place-items-center rounded-full text-gray-400 transition hover:bg-gray-100 active:scale-95 md:hidden"
+            aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu"
+            data-navbar-target="button" data-action="navbar#toggle">
+      <span data-navbar-target="openIcon"><%= render "shared/icons/menu", css: "size-6" %></span>
+      <span class="hidden" data-navbar-target="closeIcon"><%= render "shared/icons/x", css: "size-6" %></span>
+    </button>
   </div>
+
+  <%# Mobile only: dims the page under the open menu; a tap on it closes the menu. %>
+  <div class="invisible absolute inset-x-0 top-full h-dvh bg-gray-500/30 opacity-0 transition-[opacity,visibility] duration-200 md:hidden"
+       data-navbar-target="backdrop" data-action="click->navbar#close" aria-hidden="true"></div>
+
+  <nav id="mobile-menu" aria-label="Main"
+       class="invisible absolute inset-x-0 top-full -translate-y-2 border-b border-gray-200 bg-white opacity-0 shadow-md transition-[opacity,transform,visibility] duration-200 ease-out md:hidden"
+       data-navbar-target="menu">
+    <div class="mx-auto max-w-2xl px-4 pb-4 pt-3">
+      <% if user_signed_in? %>
+        <div class="flex items-center gap-3 px-3 pb-4 pt-1">
+          <%= image_tag current_user.avatar, alt: "", class: "size-11 shrink-0 rounded-full object-cover" %>
+          <div class="min-w-0">
+            <p class="truncate font-semibold text-gray-500"><%= current_user.name %></p>
+            <p class="truncate text-sm text-gray-300">@<%= current_user.username %></p>
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-1 border-t border-gray-200/70 pt-3">
+          <%= link_to tweets_path, class: "nav-row", aria: current_page_aria(tweets_path) do %>
+            <%= render "shared/icons/home", css: "size-6" %> Home
+          <% end %>
+          <%= link_to user_path(current_user), class: "nav-row",
+                      aria: current_page_aria(user_path(current_user)) do %>
+            <%= render "shared/icons/user", css: "size-6" %> Profile
+          <% end %>
+          <%= link_to edit_user_registration_path, class: "nav-row",
+                      aria: current_page_aria(edit_user_registration_path) do %>
+            <%= render "shared/icons/pencil", css: "size-6" %> Edit profile
+          <% end %>
+        </div>
+
+        <%= link_to destroy_user_session_path, data: { turbo_method: :delete },
+                    class: "btn btn-secondary mt-4 w-full" do %>
+          <%= render "shared/icons/logout" %> Log out
+        <% end %>
+      <% else %>
+        <p class="px-1 pb-4 text-sm text-gray-400">Log in to post, reply and like.</p>
+        <div class="flex flex-col gap-2">
+          <%= link_to "Log in", new_user_session_path, class: "btn btn-primary w-full" %>
+          <%= link_to "Create an account", new_user_registration_path, class: "btn btn-ghost w-full ring-1 ring-gray-200" %>
+        </div>
+      <% end %>
+    </div>
+  </nav>
 </header>

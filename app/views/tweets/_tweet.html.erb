@@ -2,35 +2,37 @@
 <article id="<%= dom_id tweet, local_assigns[:scope] %>" data-tweet="<%= tweet.id %>"
          class="card p-4 transition hover:bg-gray-100/40">
   <div class="flex items-center gap-3">
-    <%= image_tag tweet.user.avatar, alt: "avatar", class: "size-11 shrink-0 rounded-full object-cover" %>
+    <%= image_tag tweet.user.avatar, alt: "", class: "size-11 shrink-0 rounded-full object-cover" %>
     <div class="min-w-0">
-      <div class="flex flex-wrap items-baseline gap-x-2">
+      <div class="flex flex-wrap items-baseline gap-x-1.5">
         <span class="font-semibold text-gray-500"><%= tweet.user.name %></span>
-        <span class="text-sm">@<%= link_to tweet.user.username, user_path(tweet.user.id), class: "link" %></span>
+        <%= link_to "@#{tweet.user.username}", user_path(tweet.user.id), class: "link text-sm" %>
       </div>
-      <%= link_to "#{time_ago_in_words(tweet.created_at)} ago", tweet,
-                  class: "text-sm text-gray-300 hover:underline" %>
+      <%= link_to tweet, class: "text-sm text-gray-300 hover:underline" do %>
+        <time datetime="<%= tweet.created_at.iso8601 %>"
+              title="<%= tweet.created_at.strftime("%b %-d, %Y · %-l:%M %p") %>"><%= time_ago_in_words(tweet.created_at) %> ago</time>
+      <% end %>
     </div>
   </div>
 
   <p class="mt-3 whitespace-pre-line break-words text-gray-400"><%= tweet.body %></p>
 
   <div class="mt-4 flex items-center gap-6 text-sm text-gray-300">
-    <%= link_to tweet, class: "inline-flex items-center gap-1.5 transition hover:text-primary-500",
-                aria: { label: "Replies" } do %>
+    <%= link_to tweet, class: "action hover:text-primary-500" do %>
       <%= render "shared/icons/reply" %>
       <span data-replies-count="<%= tweet.id %>"><%= tweet.replies_count %></span>
+      <span class="sr-only">replies</span>
     <% end %>
 
     <%= render "likes/button", tweet: tweet %>
 
     <% if current_user && current_user.id == tweet.user_id %>
       <div class="ml-auto flex items-center gap-4">
-        <%= link_to edit_tweet_path(tweet), class: "transition hover:text-primary-500",
+        <%= link_to edit_tweet_path(tweet), class: "action hover:text-primary-500",
                     aria: { label: "Edit tweet" } do %>
           <%= render "shared/icons/pencil" %>
         <% end %>
-        <button type="button" class="cursor-pointer transition hover:text-error-300"
+        <button type="button" class="action hover:text-error-300"
                 aria-label="Delete tweet"
                 data-action="confirm-dialog#open"
                 data-confirm-dialog-url-param="<%= tweet_path(tweet) %>"

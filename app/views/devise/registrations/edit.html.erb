@@ -1,5 +1,6 @@
+<% content_for :title, "Edit profile" %>
 <div class="card mx-auto max-w-md p-8">
-  <h2 class="mb-6 text-center text-2xl font-semibold text-gray-500">Edit Profile</h2>
+  <h1 class="mb-6 text-center text-2xl font-semibold text-gray-500">Edit profile</h1>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
@@ -22,7 +23,7 @@
 
     <div class="mb-4">
       <%= f.label :avatar, class: "label" %>
-      <%= image_tag @user.avatar, alt: "avatar", class: "mb-3 size-20 rounded-full object-cover" %>
+      <%= image_tag @user.avatar, alt: "Current avatar", class: "mb-3 size-20 rounded-full object-cover" %>
       <%= f.file_field :avatar, class: "input file:mr-3 file:cursor-pointer file:rounded-full file:border-0 file:bg-primary-100 file:px-4 file:py-2 file:text-sm file:font-semibold file:text-primary-600 hover:file:bg-primary-200" %>
     </div>
 
@@ -32,7 +33,7 @@
 
     <div class="mb-4">
       <%= f.label :password, class: "label" %>
-      <i class="mb-1 block text-xs text-gray-300">(leave blank if you don't want to change it)</i>
+      <p class="mb-1 text-xs text-gray-300">Leave blank to keep your current password.</p>
       <%= f.password_field :password, autocomplete: "new-password", placeholder: "********", class: "input" %>
     </div>
 
@@ -48,7 +49,7 @@
                            placeholder: "********", class: "input" %>
     </div>
 
-    <%= f.submit "Update", class: "btn btn-primary w-full" %>
+    <%= f.submit "Save changes", class: "btn btn-primary w-full" %>
   <% end %>
 
   <div class="mt-6 text-center text-sm">

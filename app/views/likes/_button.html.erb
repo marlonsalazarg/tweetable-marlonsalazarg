@@ -2,17 +2,17 @@
 <div class="flex items-center" data-like-button="<%= tweet.id %>">
   <% if current_user && Like.exists?(tweet: tweet, user: current_user) %>
     <%= button_to like_path(tweet), method: :delete, form_class: "flex",
-          class: "inline-flex cursor-pointer items-center gap-1.5 text-primary-500 transition hover:text-primary-600",
-          aria: { label: "Unlike" } do %>
+          class: "action text-primary-500 hover:text-primary-600", aria: { pressed: true } do %>
       <%= render "shared/icons/heart_solid" %>
       <%= tweet.likes_count %>
+      <span class="sr-only">likes</span>
     <% end %>
   <% else %>
     <%= button_to likes_path(tweet: tweet), form_class: "flex",
-          class: "inline-flex cursor-pointer items-center gap-1.5 transition hover:text-primary-500",
-          aria: { label: "Like" } do %>
+          class: "action hover:text-primary-500", aria: { pressed: false } do %>
       <%= render "shared/icons/heart" %>
       <%= tweet.likes_count %>
+      <span class="sr-only">likes</span>
     <% end %>
   <% end %>
 </div>

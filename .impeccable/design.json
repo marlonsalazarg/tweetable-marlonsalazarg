@@ -1,0 +1,458 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-12T18:07:31+00:00",
+  "title": "Design System: Tweetable",
+  "extensions": {
+    "colorMeta": {
+      "rose-ink": {
+        "role": "primary",
+        "displayName": "Rose Ink",
+        "tonalRamp": [
+          "#b23861",
+          "#d44a78",
+          "#e76a94",
+          "#f490b1",
+          "#fabbd0",
+          "#feebf1"
+        ]
+      },
+      "rose-ink-deep": {
+        "role": "primary",
+        "displayName": "Rose Ink Deep",
+        "tonalRamp": [
+          "#b23861",
+          "#d44a78",
+          "#e76a94",
+          "#f490b1",
+          "#fabbd0",
+          "#feebf1"
+        ]
+      },
+      "rose-bright": {
+        "role": "primary",
+        "displayName": "Rose Bright",
+        "tonalRamp": [
+          "#b23861",
+          "#d44a78",
+          "#e76a94",
+          "#f490b1",
+          "#fabbd0",
+          "#feebf1"
+        ]
+      },
+      "rose-glow": {
+        "role": "primary",
+        "displayName": "Rose Glow",
+        "tonalRamp": [
+          "#b23861",
+          "#d44a78",
+          "#e76a94",
+          "#f490b1",
+          "#fabbd0",
+          "#feebf1"
+        ]
+      },
+      "rose-blush": {
+        "role": "primary",
+        "displayName": "Rose Blush",
+        "tonalRamp": [
+          "#b23861",
+          "#d44a78",
+          "#e76a94",
+          "#f490b1",
+          "#fabbd0",
+          "#feebf1"
+        ]
+      },
+      "rose-wash": {
+        "role": "primary",
+        "displayName": "Rose Wash",
+        "tonalRamp": [
+          "#b23861",
+          "#d44a78",
+          "#e76a94",
+          "#f490b1",
+          "#fabbd0",
+          "#feebf1"
+        ]
+      },
+      "graphite": {
+        "role": "secondary",
+        "displayName": "Graphite",
+        "tonalRamp": [
+          "#292929",
+          "#424242",
+          "#5c5c5c",
+          "#757575",
+          "#8f8f8f",
+          "#a8a8a8"
+        ]
+      },
+      "graphite-deep": {
+        "role": "secondary",
+        "displayName": "Graphite Deep",
+        "tonalRamp": [
+          "#292929",
+          "#424242",
+          "#5c5c5c",
+          "#757575",
+          "#8f8f8f",
+          "#a8a8a8"
+        ]
+      },
+      "night-ink": {
+        "role": "neutral",
+        "displayName": "Night Ink",
+        "tonalRamp": [
+          "#17171c",
+          "#303036",
+          "#7a7a7a",
+          "#d3d3d3",
+          "#f2f2f2",
+          "#ffffff"
+        ]
+      },
+      "body-ink": {
+        "role": "neutral",
+        "displayName": "Body Ink",
+        "tonalRamp": [
+          "#17171c",
+          "#303036",
+          "#7a7a7a",
+          "#d3d3d3",
+          "#f2f2f2",
+          "#ffffff"
+        ]
+      },
+      "muted-gray": {
+        "role": "neutral",
+        "displayName": "Muted Gray",
+        "tonalRamp": [
+          "#17171c",
+          "#303036",
+          "#7a7a7a",
+          "#d3d3d3",
+          "#f2f2f2",
+          "#ffffff"
+        ]
+      },
+      "hairline": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "tonalRamp": [
+          "#17171c",
+          "#303036",
+          "#7a7a7a",
+          "#d3d3d3",
+          "#f2f2f2",
+          "#ffffff"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Paper",
+        "tonalRamp": [
+          "#17171c",
+          "#303036",
+          "#7a7a7a",
+          "#d3d3d3",
+          "#f2f2f2",
+          "#ffffff"
+        ]
+      },
+      "card-white": {
+        "role": "neutral",
+        "displayName": "Card White",
+        "tonalRamp": [
+          "#17171c",
+          "#303036",
+          "#7a7a7a",
+          "#d3d3d3",
+          "#f2f2f2",
+          "#ffffff"
+        ]
+      },
+      "coral-signal": {
+        "role": "tertiary",
+        "displayName": "Coral Signal",
+        "tonalRamp": [
+          "#a11730",
+          "#c51c3b",
+          "#e02447",
+          "#e54865",
+          "#ea6c83"
+        ]
+      },
+      "alarm-red": {
+        "role": "tertiary",
+        "displayName": "Alarm Red",
+        "tonalRamp": [
+          "#a11730",
+          "#c51c3b",
+          "#e02447",
+          "#e54865",
+          "#ea6c83"
+        ]
+      },
+      "alarm-red-deep": {
+        "role": "tertiary",
+        "displayName": "Alarm Red Deep",
+        "tonalRamp": [
+          "#a11730",
+          "#c51c3b",
+          "#e02447",
+          "#e54865",
+          "#ea6c83"
+        ]
+      },
+      "alarm-wine": {
+        "role": "tertiary",
+        "displayName": "Alarm Wine",
+        "tonalRamp": [
+          "#a11730",
+          "#c51c3b",
+          "#e02447",
+          "#e54865",
+          "#ea6c83"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Page titles and auth card headings; one per screen."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Profile name; dialog title one step smaller."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Author names on tweet cards."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Tweet text and inputs."
+      },
+      "body-sm": {
+        "displayName": "Body Small",
+        "purpose": "Meta lines, counts, nav, toasts, footer."
+      },
+      "button": {
+        "displayName": "Button",
+        "purpose": "All button labels; 0.75rem on small buttons."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Uppercase tracked form labels and section labels, Muted Gray."
+      },
+      "wordmark": {
+        "displayName": "Wordmark",
+        "purpose": "The {Tweet}able logotype only."
+      }
+    },
+    "shadows": [
+      {
+        "name": "resting-lift",
+        "value": "0 0 0 1px rgb(211 211 211 / 0.7), 0 1px 2px 0 rgb(0 0 0 / 0.05)",
+        "purpose": "Cards (ring + shadow-sm); solid buttons use the shadow alone."
+      },
+      {
+        "name": "menu",
+        "value": "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)",
+        "purpose": "Mobile nav dropdown."
+      },
+      {
+        "name": "toast",
+        "value": "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
+        "purpose": "Floating toasts."
+      },
+      {
+        "name": "dialog",
+        "value": "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)",
+        "purpose": "Confirm dialog, over a 50% Night Ink blurred backdrop."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-standard",
+        "value": "cubic-bezier(0.4, 0, 0.2, 1)",
+        "purpose": "Tailwind default easing for all transitions."
+      },
+      {
+        "name": "duration-feedback",
+        "value": "150ms",
+        "purpose": "Color and hover changes, button press."
+      },
+      {
+        "name": "duration-enter-exit",
+        "value": "300ms",
+        "purpose": "Toast slide/fade (8px), removed tweets fade to 0 and scale to 95%."
+      },
+      {
+        "name": "press",
+        "value": "translateY(1px)",
+        "purpose": "Active state on buttons."
+      },
+      {
+        "name": "toast-dwell",
+        "value": "4000ms",
+        "purpose": "Toast auto-dismiss delay; paused on hover."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "md",
+        "value": "768px",
+        "purpose": "Header nav switches from dropdown to inline."
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The single forward action on a surface: Tweet, Sign in, Edit profile.",
+      "html": "<button class=\"ds-btn-primary\">Tweet</button>",
+      "css": ".ds-btn-primary{font-family:'Inter var',ui-sans-serif,system-ui,sans-serif;display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:9999px;padding:10px 20px;font-size:14px;line-height:20px;font-weight:600;cursor:pointer;box-shadow:0 1px 2px 0 rgb(0 0 0 / 0.05);transition:background-color 150ms cubic-bezier(0.4,0,0.2,1),transform 150ms;background:#d44a78;color:#fff;}.ds-btn-primary:hover{background:#b23861;}.ds-btn-primary:focus-visible{outline:2px solid #f490b1;outline-offset:2px;}.ds-btn-primary:active{transform:translateY(1px);}"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Neutral actions with weight: Log out, Continue with GitHub.",
+      "html": "<button class=\"ds-btn-secondary\">Continue with GitHub</button>",
+      "css": ".ds-btn-secondary{font-family:'Inter var',ui-sans-serif,system-ui,sans-serif;display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:9999px;padding:10px 20px;font-size:14px;line-height:20px;font-weight:600;cursor:pointer;box-shadow:0 1px 2px 0 rgb(0 0 0 / 0.05);transition:background-color 150ms cubic-bezier(0.4,0,0.2,1),transform 150ms;background:#424242;color:#fff;}.ds-btn-secondary:hover{background:#292929;}.ds-btn-secondary:focus-visible{outline:2px solid #f490b1;outline-offset:2px;}.ds-btn-secondary:active{transform:translateY(1px);}"
+    },
+    {
+      "name": "Danger Button",
+      "kind": "button",
+      "refersTo": "button-danger",
+      "description": "Destructive confirmation only, inside the delete dialog.",
+      "html": "<button class=\"ds-btn-danger\">Delete</button>",
+      "css": ".ds-btn-danger{font-family:'Inter var',ui-sans-serif,system-ui,sans-serif;display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:9999px;padding:10px 20px;font-size:14px;line-height:20px;font-weight:600;cursor:pointer;box-shadow:0 1px 2px 0 rgb(0 0 0 / 0.05);transition:background-color 150ms cubic-bezier(0.4,0,0.2,1),transform 150ms;background:#e02447;color:#fff;padding:6px 16px;font-size:12px;line-height:16px;}.ds-btn-danger:hover{background:#c51c3b;}.ds-btn-danger:focus-visible{outline:2px solid #f490b1;outline-offset:2px;}.ds-btn-danger:active{transform:translateY(1px);}"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Dismissive actions like Cancel; fills with Paper on hover.",
+      "html": "<button class=\"ds-btn-ghost\">Cancel</button>",
+      "css": ".ds-btn-ghost{font-family:'Inter var',ui-sans-serif,system-ui,sans-serif;display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:9999px;padding:10px 20px;font-size:14px;line-height:20px;font-weight:600;cursor:pointer;box-shadow:0 1px 2px 0 rgb(0 0 0 / 0.05);transition:background-color 150ms cubic-bezier(0.4,0,0.2,1),transform 150ms;background:transparent;color:#303036;box-shadow:none;padding:6px 16px;font-size:12px;line-height:16px;}.ds-btn-ghost:hover{background:#f2f2f2;}.ds-btn-ghost:focus-visible{outline:2px solid #f490b1;outline-offset:2px;}.ds-btn-ghost:active{transform:translateY(1px);}"
+    },
+    {
+      "name": "Text Input",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Labeled form field with Rose Glow focus.",
+      "html": "<label class=\"ds-field\"><span class=\"ds-label\">Email</span><input class=\"ds-input\" type=\"email\" placeholder=\"example@mail.com\"></label>",
+      "css": "font-family:'Inter var',ui-sans-serif,system-ui,sans-serif;.ds-field{display:block;width:280px;font-family:'Inter var',ui-sans-serif,system-ui,sans-serif;}.ds-label{display:block;margin-bottom:4px;font-size:12px;line-height:16px;font-weight:500;text-transform:uppercase;letter-spacing:0.1em;color:#7a7a7a;}.ds-input{font-family:'Inter var',ui-sans-serif,system-ui,sans-serif;box-sizing:border-box;width:100%;border:1px solid #d3d3d3;border-radius:8px;background:#fff;color:#303036;padding:8px 12px;font-size:16px;line-height:24px;outline:none;transition:border-color 150ms,box-shadow 150ms;}.ds-input::placeholder{color:#d3d3d3;}.ds-input:focus{border-color:#f490b1;box-shadow:0 0 0 1px #f490b1;}"
+    },
+    {
+      "name": "Tweet Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "The core unit: avatar, author, body and action row on a soft white card.",
+      "html": "<article class=\"ds-tweet\"><div class=\"ds-tweet-head\"><span class=\"ds-avatar\"></span><div><div class=\"ds-tweet-names\"><span class=\"ds-tweet-name\">Ada Lovelace</span><a class=\"ds-link\" href=\"#\">@ada</a></div><a class=\"ds-tweet-time\" href=\"#\">3 hours ago</a></div></div><p class=\"ds-tweet-body\">Short notes, written in rose ink. Remember to think before you write.</p><div class=\"ds-tweet-actions\"><a class=\"ds-action\" href=\"#\"><svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 24 24\" stroke-width=\"1.5\" stroke=\"currentColor\" width=\"20\" height=\"20\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M12 20.25c4.97 0 9-3.694 9-8.25s-4.03-8.25-9-8.25S3 7.444 3 12c0 2.104.859 4.023 2.273 5.48.432.447.74 1.04.586 1.641a4.483 4.483 0 0 1-.923 1.785A5.969 5.969 0 0 0 6 21c1.282 0 2.47-.402 3.445-1.087.81.22 1.668.337 2.555.337Z\"/></svg><span>4</span></a><button class=\"ds-action ds-action-liked\"><svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"currentColor\" viewBox=\"0 0 24 24\" stroke-width=\"1.5\" stroke=\"currentColor\" width=\"20\" height=\"20\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z\"/></svg><span>12</span></button></div></article>",
+      "css": ".ds-tweet{font-family:'Inter var',ui-sans-serif,system-ui,sans-serif;width:420px;background:#fff;border-radius:16px;padding:16px;box-shadow:0 0 0 1px rgb(211 211 211 / 0.7),0 1px 2px 0 rgb(0 0 0 / 0.05);transition:background-color 150ms;}.ds-tweet:hover{background:#fbfbfb;}.ds-tweet-head{display:flex;align-items:center;gap:12px;}.ds-avatar{width:44px;height:44px;border-radius:9999px;background:linear-gradient(135deg,#fabbd0,#e76a94);flex-shrink:0;}.ds-tweet-names{display:flex;gap:8px;align-items:baseline;}.ds-tweet-name{font-weight:600;color:#17171c;}.ds-link{color:#d44a78;font-size:14px;text-decoration:none;transition:color 150ms;}.ds-link:hover{color:#b23861;text-decoration:underline;}.ds-tweet-time{font-size:14px;color:#7a7a7a;text-decoration:none;}.ds-tweet-time:hover{text-decoration:underline;}.ds-tweet-body{margin:12px 0 0;color:#303036;font-size:16px;line-height:24px;}.ds-tweet-actions{margin-top:16px;display:flex;gap:24px;font-size:14px;color:#7a7a7a;}.ds-action{display:inline-flex;align-items:center;gap:6px;color:inherit;background:none;border:0;padding:0;font:inherit;cursor:pointer;text-decoration:none;transition:color 150ms;}.ds-action:hover{color:#d44a78;}.ds-action:focus-visible{outline:2px solid #f490b1;outline-offset:2px;border-radius:4px;}.ds-action-liked{color:#d44a78;}.ds-action-liked:hover{color:#b23861;}"
+    },
+    {
+      "name": "Header Navigation",
+      "kind": "nav",
+      "description": "Sticky translucent header with the {Tweet}able wordmark and actions.",
+      "html": "<header class=\"ds-header\"><a class=\"ds-wordmark\" href=\"#\"><span class=\"ds-brace\">{</span><span class=\"ds-rose\">Tweet</span>able<span class=\"ds-brace\">}</span></a><nav class=\"ds-nav\"><a class=\"ds-link\" href=\"#\">Profile</a><button class=\"ds-nav-btn\">Log out</button></nav></header>",
+      "css": ".ds-header{font-family:'Inter var',ui-sans-serif,system-ui,sans-serif;width:560px;display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:rgb(255 255 255 / 0.8);backdrop-filter:blur(8px);border-bottom:1px solid #d3d3d3;}.ds-wordmark{font-family:Roboto,ui-sans-serif,system-ui,sans-serif;font-size:20px;font-weight:700;line-height:1;letter-spacing:-0.025em;color:#303036;text-decoration:none;}.ds-brace{font-weight:500;}.ds-rose{color:#e76a94;}.ds-nav{display:flex;align-items:center;gap:16px;}.ds-link{color:#d44a78;font-size:14px;font-weight:500;text-decoration:none;transition:color 150ms;}.ds-link:hover{color:#b23861;text-decoration:underline;}.ds-nav-btn{font-family:'Inter var',ui-sans-serif,system-ui,sans-serif;border:0;border-radius:9999px;padding:6px 16px;font-size:12px;line-height:16px;font-weight:600;background:#424242;color:#fff;cursor:pointer;box-shadow:0 1px 2px 0 rgb(0 0 0 / 0.05);transition:background-color 150ms,transform 150ms;}.ds-nav-btn:hover{background:#292929;}.ds-nav-btn:focus-visible{outline:2px solid #f490b1;outline-offset:2px;}.ds-nav-btn:active{transform:translateY(1px);}"
+    },
+    {
+      "name": "Profile Tabs",
+      "kind": "chip",
+      "refersTo": "profile-tab",
+      "description": "CSS-only radio tabs; active tab gets a Rose Ink Deep underline.",
+      "html": "<div class=\"ds-tabs\"><button class=\"ds-tab ds-tab-active\">Tweets(8)</button><button class=\"ds-tab\">Likes(3)</button></div>",
+      "css": ".ds-tabs{font-family:'Inter var',ui-sans-serif,system-ui,sans-serif;display:flex;border-bottom:1px solid #d3d3d3;width:320px;}.ds-tab{font-family:'Inter var',ui-sans-serif,system-ui,sans-serif;background:none;border:0;border-bottom:2px solid transparent;margin-bottom:-1px;padding:12px 16px;font-size:16px;color:#7a7a7a;cursor:pointer;transition:color 150ms;}.ds-tab:hover{color:#17171c;}.ds-tab:focus-visible{outline:none;box-shadow:0 0 0 2px #f490b1;}.ds-tab-active{color:#b23861;font-weight:600;border-bottom-color:#b23861;}.ds-tab-active:hover{color:#b23861;}"
+    },
+    {
+      "name": "Toast",
+      "kind": "custom",
+      "refersTo": "toast",
+      "description": "Night Ink notification, bottom-center, auto-dismisses after 4s.",
+      "html": "<div class=\"ds-toast\" role=\"status\"><span class=\"ds-toast-icon\"><svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 24 24\" stroke-width=\"1.5\" stroke=\"currentColor\" width=\"24\" height=\"24\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z\"/></svg></span><p class=\"ds-toast-msg\">Tweet was successfully created.</p><button class=\"ds-toast-x\" aria-label=\"Dismiss\"><svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 24 24\" stroke-width=\"1.5\" stroke=\"currentColor\" width=\"20\" height=\"20\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M6 18 18 6M6 6l12 12\"/></svg></button></div>",
+      "css": ".ds-toast{font-family:'Inter var',ui-sans-serif,system-ui,sans-serif;display:flex;align-items:center;gap:12px;width:384px;box-sizing:border-box;background:#17171c;color:#fff;border-radius:12px;padding:12px 16px;font-size:14px;line-height:20px;box-shadow:0 10px 15px -3px rgb(0 0 0 / 0.1),0 4px 6px -4px rgb(0 0 0 / 0.1);}.ds-toast-icon{display:flex;color:#f490b1;}.ds-toast-msg{flex:1;margin:0;}.ds-toast-x{display:flex;background:none;border:0;padding:0;color:#d3d3d3;cursor:pointer;transition:color 150ms;}.ds-toast-x:hover{color:#fff;}.ds-toast-x:focus-visible{outline:2px solid #f490b1;outline-offset:2px;border-radius:4px;}"
+    },
+    {
+      "name": "Validation Box",
+      "kind": "custom",
+      "description": "Inline form errors: Coral Signal wash with Alarm Wine text.",
+      "html": "<div class=\"ds-alert\"><strong>1 error prohibited this tweet from being saved:</strong><ul><li>Body is too long (maximum is 140 characters)</li></ul></div>",
+      "css": ".ds-alert{font-family:'Inter var',ui-sans-serif,system-ui,sans-serif;width:360px;border-radius:8px;background:rgb(234 108 131 / 0.2);color:#a11730;padding:12px 16px;font-size:14px;line-height:20px;}.ds-alert ul{margin:4px 0 0;padding-left:20px;}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Rose-Ink Postcard",
+    "overview": "Every tweet is a postcard: a short note on a soft white card, sitting on a quiet paper-gray table. The system is friendly, soft and tidy. Shapes are rounded, surfaces float slightly, and one warm rose ink marks everything you can write, send, like or follow. The rose works because it is the only warm color on screen. Everything else is a neutral run from Paper to Night Ink.\n\nDensity is calm. The whole app lives in a single 672px reading column, and cards stack with 12px gaps. Each card has generous 16px insets, so even a feed of 140-character posts reads like a stack of separate notes rather than a scrolling log. Craft shows at the edges: the 1px press on buttons, hairline rings on cards, toasts that slide in and pause under the pointer, and deleted tweets that fade and shrink away instead of vanishing.\n\nThe identity is Tweetable's own. It borrows Twitter's mechanics (short posts, replies, likes, profiles) but not its blue, its layout or its iconography. The signature is the typographic `{Tweet}able` wordmark: Roboto in curly braces, with \"Tweet\" written in rose.",
+    "keyCharacteristics": [
+      "One warm accent (Rose Ink) on an otherwise neutral, slightly cool palette.",
+      "White cards with a 16px radius on a Paper canvas, lifted by a hairline ring and the faintest shadow.",
+      "Pill-shaped buttons and avatars everywhere; nothing interactive has a sharp corner.",
+      "Montserrat headings over Inter body text: geometric warmth on top, neutral readability underneath.",
+      "A single centered 672px column on every screen size.",
+      "Soft, short motion (150–300ms) used only for feedback, never decoration."
+    ],
+    "rules": [
+      {
+        "name": "The One Warm Color Rule",
+        "body": "Rose Ink and its ramp are the only warm hues in the product. Don't introduce a second accent (no blue links, no green success). Success is already Rose Glow on Night Ink.",
+        "section": "colors"
+      },
+      {
+        "name": "The Red Means Gone Rule",
+        "body": "The error ramp appears only for destructive actions (delete) and failures (validation, alert toasts). Never use it for emphasis, badges or decoration.",
+        "section": "colors"
+      },
+      {
+        "name": "The Contrast Debt Rule",
+        "body": "Three incumbent pairings fall below WCAG AA for small text: white on Rose Ink (4.16:1, used on 14px button labels), Muted Gray on Card White (4.29:1), and Muted Gray on Paper (3.83:1, used in the footer). Don't extend these pairings to new places. When a new label must be rose with white text, put it on Rose Ink Deep (5.78:1).",
+        "section": "colors"
+      },
+      {
+        "name": "The Quiet Uppercase Rule",
+        "body": "Uppercase is reserved for 12px tracked labels in Muted Gray. Headings and buttons stay in sentence case.",
+        "section": "typography"
+      },
+      {
+        "name": "The Braces Belong to the Logo Rule",
+        "body": "Curly braces and Roboto appear only in the wordmark. Don't reuse them as a decorative motif or as a heading font.",
+        "section": "typography"
+      },
+      {
+        "name": "The Postcard Rests Rule",
+        "body": "Cards are on the table, not hovering over it. A card never gets more than the resting lift. Hover feedback on a tweet card is a faint Paper tint, not a bigger shadow.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Overlay Earns Its Shadow Rule",
+        "body": "Only surfaces that cover other content (menu, toast, dialog) step up the shadow scale, and each step up means \"further above the page\".",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** put every new content block on a Card White card with a 16px radius, the hairline ring and resting lift, stacked 12px apart in the 672px column.",
+      "**Do** reuse the component classes (`btn` + variant, `input`, `label`, `card`, `link`, `alert-box`) before composing new utility stacks. Extend `application.tailwind.css` when a new pattern repeats.",
+      "**Do** keep Rose Ink for the single forward action on a surface. Give everything else Graphite, Ghost or a link.",
+      "**Do** keep motion short and functional: 150ms for color and press changes, 300ms for enter, exit and removal (fade plus slight scale or slide).",
+      "**Do** draw icons as inline SVG partials (`render \"shared/icons/name\", css: \"size-5\"`) in `currentColor`, so they inherit the text and hover tints.",
+      "**Do** confirm destructive actions with the shared confirm dialog and report outcomes with a toast. Keep validation errors inline.",
+      "**Do** give every interactive element the 2px Rose Glow focus outline."
+    ],
+    "donts": [
+      "**Don't** add a second accent hue, or bring in Twitter's blue or its layout. Tweetable borrows the mechanics, not the identity.",
+      "**Don't** use sharp corners on anything interactive, or give a nested element a larger radius than its container.",
+      "**Don't** raise card shadows on hover or use heavy shadows on in-page content. Bigger shadows are for overlays only.",
+      "**Don't** use the error reds for anything except deletion and failure.",
+      "**Don't** set new small text in white on Rose Ink or in Muted Gray on Paper (see the Contrast Debt Rule).",
+      "**Don't** use curly braces or Roboto outside the wordmark, or uppercase outside 12px labels.",
+      "**Don't** reintroduce raster icons or hand-written CSS outside the Tailwind layers. `logo_app.png` and `default_avatar.png` are the only images."
+    ]
+  }
+}

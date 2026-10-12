@@ -3,14 +3,27 @@
 @tailwind utilities;
 
 @layer base {
+  /* The open mobile menu locks scrolling; keep the gutter so the page doesn't shift sideways. */
+  html {
+    scrollbar-gutter: stable;
+  }
+
   body {
-    @apply bg-gray-100 text-gray-400 antialiased;
+    @apply bg-gray-100 text-gray-400 caret-primary-500 antialiased;
+  }
+
+  ::selection {
+    @apply bg-primary-200 text-gray-500;
   }
 
   h1,
   h2,
   h3 {
     @apply font-display;
+  }
+
+  :where(a, button, summary):focus-visible {
+    @apply outline outline-2 outline-offset-2 outline-primary-300;
   }
 }
 
@@ -20,7 +33,8 @@
       font-semibold shadow-sm transition cursor-pointer
       active:translate-y-px
       focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2
-      focus-visible:outline-primary-300;
+      focus-visible:outline-primary-300
+      disabled:cursor-not-allowed disabled:opacity-50 disabled:active:translate-y-0;
   }
 
   .btn-sm {
@@ -44,8 +58,24 @@
   }
 
   .input {
-    @apply w-full rounded-lg border-gray-200 bg-white text-gray-400 placeholder:text-gray-200
+    @apply w-full rounded-lg border-gray-200 bg-white text-gray-400 placeholder:text-gray-300
       focus:border-primary-300 focus:ring-primary-300;
+  }
+
+  /* Icon + count controls on a tweet card. The padding is cancelled by the margin, so the
+     tap target grows to 36px without moving the icon. */
+  .action {
+    @apply -m-2 inline-flex cursor-pointer items-center gap-1.5 rounded-full p-2 tabular-nums
+      transition;
+  }
+
+  .nav-row {
+    @apply flex items-center gap-3 rounded-xl px-3 py-3 text-base font-medium text-gray-400
+      transition hover:bg-gray-100 active:bg-gray-100;
+  }
+
+  .nav-row[aria-current="page"] {
+    @apply bg-primary-100 text-primary-600;
   }
 
   .label {

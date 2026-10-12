@@ -1,13 +1,17 @@
 <h1 class="mb-6 text-2xl font-semibold text-gray-500">Home</h1>
 
 <% if current_user %>
-  <%= render "form", tweet: Tweet.new %>
+  <div class="mb-6">
+    <%= render "form", tweet: Tweet.new %>
+  </div>
 <% end %>
 
 <div id="tweets" class="space-y-3">
   <% @tweets.each do |tweet| %>
-    <% if tweet.replied_to == nil %>
+    <% if tweet.replied_to_id.nil? %>
       <%= render tweet %>
     <% end %>
   <% end %>
+  <%# Shows once the list has no tweets, including after the last one is deleted in place. %>
+  <p class="hidden py-12 text-center text-sm text-gray-400 only:block">No tweets yet. Write the first one.</p>
 </div>

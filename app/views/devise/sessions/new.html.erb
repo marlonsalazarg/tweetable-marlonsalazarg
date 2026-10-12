@@ -1,5 +1,6 @@
+<% content_for :title, "Sign in" %>
 <div class="card mx-auto max-w-md p-8">
-  <h2 class="mb-6 text-center text-2xl font-semibold text-gray-500">Sign in to your account</h2>
+  <h1 class="mb-6 text-center text-2xl font-semibold text-gray-500">Sign in to your account</h1>
 
   <%- if devise_mapping.omniauthable? %>
     <%- resource_class.omniauth_providers.each do |provider| %>
