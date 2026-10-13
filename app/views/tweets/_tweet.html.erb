@@ -6,7 +6,7 @@
     <div class="min-w-0">
       <div class="flex flex-wrap items-baseline gap-x-1.5">
         <span class="font-semibold text-gray-500"><%= tweet.user.name %></span>
-        <%= link_to "@#{tweet.user.username}", user_path(tweet.user.id), class: "link text-sm" %>
+        <%= link_to "@#{tweet.user.username}", user_path(tweet.user), class: "link text-sm" %>
       </div>
       <%= link_to tweet, class: "text-sm text-gray-300 hover:underline" do %>
         <time datetime="<%= tweet.created_at.iso8601 %>"

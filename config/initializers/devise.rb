@@ -180,10 +180,9 @@ Devise.setup do |config|
   # Range for password length.
   config.password_length = 6..128
 
-  # Email regex used to validate email formats. It simply asserts that
-  # one (and only one) @ exists in the given string. This is mainly
+  # Email regex used to validate email formats (user@domain.tld). This is mainly
   # to give user feedback and not to assert the e-mail validity.
-  config.email_regexp = /\A[^@\s]+@[^@\s]+\z/
+  config.email_regexp = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
   # ==> Configuration for :timeoutable
   # The time you want to timeout the user session without activity. After this
@@ -272,7 +271,7 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   config.omniauth :github, ENV.fetch("GITHUB_KEY", nil), ENV.fetch("GITHUB_SECRET", nil),
-                  scope: "user,public_repo"
+                  scope: "user:email" # read-only: just enough to get the email
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

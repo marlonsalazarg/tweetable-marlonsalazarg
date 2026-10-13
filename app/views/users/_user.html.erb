@@ -33,7 +33,7 @@
 
   <div class="order-last hidden w-full border-t border-gray-200 pt-4 peer-checked/tweets:block">
     <div id="tweets" class="space-y-3">
-      <% user.tweets.order(created_at: :desc).each do |tweet| %>
+      <% user.tweets.with_author.order(created_at: :desc).each do |tweet| %>
         <%= render tweet %>
       <% end %>
       <p class="hidden py-12 text-center text-sm text-gray-400 only:block">

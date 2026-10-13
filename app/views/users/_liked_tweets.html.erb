@@ -1,4 +1,4 @@
-<% user.liked_tweets.order(created_at: :desc).each do |tweet| %>
+<% user.liked_tweets.with_author.order(created_at: :desc).each do |tweet| %>
   <%= render "tweets/tweet", tweet: tweet, scope: :liked %>
 <% end %>
 <p class="hidden py-12 text-center text-sm text-gray-400 only:block">No liked tweets yet.</p>

@@ -21,7 +21,7 @@
 <% if @tweet.replies.any? %>
   <h2 class="mb-3 mt-8 text-xs font-medium uppercase tracking-widest text-gray-300">Replies</h2>
   <div class="space-y-3">
-    <% @tweet.replies.order(created_at: :desc).each do |reply| %>
+    <% @tweet.replies.with_author.order(created_at: :desc).each do |reply| %>
       <%= render reply %>
     <% end %>
   </div>

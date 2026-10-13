@@ -5,7 +5,7 @@ class TweetsController < ApplicationController
 
   # GET /tweets
   def index
-    @tweets = Tweet.all.order(created_at: :desc)
+    @tweets = Tweet.top_level.with_author.order(created_at: :desc)
   end
 
   # GET /tweets/1
@@ -21,9 +21,7 @@ class TweetsController < ApplicationController
 
   # POST /tweets
   def create
-    @tweet = Tweet.new(tweet_params)
-    @tweet.user = current_user
-    @tweet.replied_to_id = params[:tweet][:replied_to_id]
+    @tweet = current_user.tweets.new(params.require(:tweet).permit(:body, :replied_to_id))
     if @tweet.save
       reply = @tweet.replied_to_id.present?
       redirect_to reply ? tweet_url(@tweet.replied_to_id) : tweets_url,
@@ -49,12 +47,12 @@ class TweetsController < ApplicationController
     notice = parent ? "Reply deleted." : "Tweet deleted."
     @tweet.destroy
 
-    if params[:redirect].present?
-      redirect_to parent ? tweet_url(parent) : tweets_url, notice: notice, status: :see_other
-    else
-      respond_to do |format|
+    respond_to do |format|
+      if params[:redirect].blank?
         format.turbo_stream { render turbo_stream: destroy_streams(removed_ids, parent, notice) }
-        format.html { redirect_to tweets_url, notice:, status: :see_other }
+      end
+      format.html do
+        redirect_to parent ? tweet_url(parent) : tweets_url, notice:, status: :see_other
       end
     end
   end
@@ -104,7 +102,7 @@ class TweetsController < ApplicationController
     redirect_to tweet_url(@tweet), alert: "You can't change this tweet.", status: :see_other
   end
 
-  # Only the body is user-editable; counters are caches and replied_to_id is set in #create.
+  # Only the body is editable; counters are caches and replied_to_id is fixed once created.
   def tweet_params
     params.require(:tweet).permit(:body)
   end

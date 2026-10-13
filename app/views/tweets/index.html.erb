@@ -8,9 +8,7 @@
 
 <div id="tweets" class="space-y-3">
   <% @tweets.each do |tweet| %>
-    <% if tweet.replied_to_id.nil? %>
-      <%= render tweet %>
-    <% end %>
+    <%= render tweet %>
   <% end %>
   <%# Shows once the list has no tweets, including after the last one is deleted in place. %>
   <p class="hidden py-12 text-center text-sm text-gray-400 only:block">No tweets yet. Write the first one.</p>
