@@ -180,6 +180,8 @@ GEM
     racc (1.6.0)
     racc (1.6.0-java)
     rack (2.2.3)
+    rack-attack (6.8.0)
+      rack (>= 1.0, < 4)
     rack-protection (3.0.6)
       rack
     rack-test (1.1.0)
@@ -307,6 +309,7 @@ DEPENDENCIES
   omniauth-rails_csrf_protection
   pg (~> 1.1)
   puma (~> 5.0)
+  rack-attack
   rails (~> 7.0.2.4)
   rails_live_reload
   rubocop

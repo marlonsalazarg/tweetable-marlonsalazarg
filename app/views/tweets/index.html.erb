@@ -11,5 +11,20 @@
     <%= render tweet %>
   <% end %>
   <%# Shows once the list has no tweets, including after the last one is deleted in place. %>
-  <p class="hidden py-12 text-center text-sm text-gray-400 only:block">No tweets yet. Write the first one.</p>
+  <p class="hidden py-12 text-center text-sm text-gray-400 only:block">
+    <%= @page > 1 ? "No more tweets." : "No tweets yet. Write the first one." %>
+  </p>
 </div>
+
+<% if @page > 1 || @older_page %>
+  <nav class="mt-6 flex items-center justify-between" aria-label="Pagination">
+    <% if @page > 1 %>
+      <%= link_to "Newer tweets", tweets_path(page: (@page - 1 if @page > 2)),
+                  class: "btn btn-ghost btn-sm", rel: "prev" %>
+    <% end %>
+    <% if @older_page %>
+      <%= link_to "Older tweets", tweets_path(page: @older_page),
+                  class: "btn btn-ghost btn-sm ml-auto", rel: "next" %>
+    <% end %>
+  </nav>
+<% end %>

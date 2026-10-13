@@ -1,11 +1,19 @@
 class TweetsController < ApplicationController
+  PER_PAGE = 20
+
   before_action :set_tweet, only: %i[show edit update destroy]
   before_action :authorize_edit!, only: %i[edit update]
   before_action :authorize_destroy!, only: :destroy
 
-  # GET /tweets
+  # GET /tweets?page=2
   def index
-    @tweets = Tweet.top_level.with_author.order(created_at: :desc)
+    @page = [params[:page].to_i, 1].max
+    # One extra row tells whether there is an older page, without a COUNT query. The id breaks
+    # ties so rows with the same created_at don't shift between pages.
+    tweets = Tweet.top_level.with_author.order(created_at: :desc, id: :desc)
+                  .offset((@page - 1) * PER_PAGE).limit(PER_PAGE + 1).to_a
+    @older_page = @page + 1 if tweets.size > PER_PAGE
+    @tweets = tweets.first(PER_PAGE)
   end
 
   # GET /tweets/1

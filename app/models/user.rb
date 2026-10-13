@@ -5,7 +5,6 @@ class User < ApplicationRecord
   # password (presence, confirmation, config.password_length), so they aren't repeated here.
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable
-  has_secure_token
   before_create :default_avatar
 
   # Associations
